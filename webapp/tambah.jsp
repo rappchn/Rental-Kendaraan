@@ -1,4 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="javax.servlet.http.HttpSession" %>
+<%
+    HttpSession sessionlogin = request.getSession(false);
+    if (sessionlogin == null || session.getAttribute("admin") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,5 +27,6 @@
 
             <input type="submit" value="Simpan">
         </form>
+        <a href="logout">Logout</a>
     </body>
 </html>
